@@ -38,3 +38,16 @@ hs_err_pid*
 
 /xsolla-promotion-api-testing.iml
 /.idea/
+.gitignore
+.idea/compiler.xml
+.idea/libraries/
+.idea/markdown-navigator.xml
+.idea/markdown-navigator/
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+README.MD
+TEST-PLAN.MD
+pom.xml
+src/
+xsolla-promotion-api-testing.iml
