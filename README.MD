@@ -29,10 +29,14 @@
   - быстрый
   - его знаю я
 - библиотека **Rest-assured**
-  - простая, но мощная библиотека
-  - хорошая документация
+  - простой, легко-читаемый код
+  - поддержка конструкции Given-When-Then - парадигма BDD
+  - быстрый
+  - прост в освоении
+  - REST-запросы любой сложности
 - тестовый фреймворк TestNG
-  - мощный фреймворк для написания разный тестов (unit testing, api testing, ui testing, etc)
+  - мощный фреймворк для написания разных тестов (unit testing, api testing, e2e testing, ui testing, etc)
+  - отлично подходит для функционального и регрессионного тестирования и на CI-серверах
   - унаследовал многое у JUnit и добавил свои функции
   - хорошая документация
   - мощное комьюнити
@@ -46,7 +50,7 @@
 ## Тесты
 ### Окружение
 Установить:
-- [Jav Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) для текущей ОС
+- [Java Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) для текущей ОС
 - [Maven 3](https://maven.apache.org/download.cgi) для текущей ОС
 
 ### Запуск тестов
