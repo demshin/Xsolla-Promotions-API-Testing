@@ -28,10 +28,16 @@ public class TestsConfig {
     @Property("server.host")
     private String host = "";
 
-    public Integer getPort() {
+    @Property("merchant")
+    private String merchant = "";
+
+    @Property("section")
+    private String section = "";
+
+    public String getPort() {
         String portForTests = port;
         if (portForTests != null) {
-            return Integer.valueOf(portForTests);
+            return portForTests;
         } else {
             throw new IllegalStateException("Port '" + port + "' is not valid");
         }
@@ -51,7 +57,25 @@ public class TestsConfig {
         if (hostForTests != null) {
             return hostForTests;
         } else {
-            throw new IllegalStateException(("Host '" + host + "' is not valid"));
+            throw new IllegalStateException("Host '" + host + "' is not valid");
+        }
+    }
+
+    public String getMerchant() {
+        String merchantForTests = merchant;
+        if (merchantForTests != null) {
+            return merchantForTests;
+        } else {
+            throw new IllegalStateException("Merchant '" + merchant + "' is not valid");
+        }
+    }
+
+    public String getSection() {
+        String sectionForTests = section;
+        if (sectionForTests != null) {
+            return sectionForTests;
+        } else {
+            throw new IllegalStateException("Section '" + section + "' is not valid");
         }
     }
 }
