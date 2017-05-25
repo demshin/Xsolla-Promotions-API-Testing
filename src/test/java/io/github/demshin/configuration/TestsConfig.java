@@ -19,9 +19,6 @@ public class TestsConfig {
         PropertiesLoader.populate(this);
     }
 
-    @Property("server.port")
-    private String port = "";
-
     @Property("server.base")
     private String base = "";
 
@@ -33,15 +30,6 @@ public class TestsConfig {
 
     @Property("section")
     private String section = "";
-
-    public String getPort() {
-        String portForTests = port;
-        if (portForTests != null) {
-            return portForTests;
-        } else {
-            throw new IllegalStateException("Port '" + port + "' is not valid");
-        }
-    }
 
     public String getBase() {
         String baseForTests = base;

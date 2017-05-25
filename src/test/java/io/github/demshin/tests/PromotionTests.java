@@ -6,7 +6,7 @@ public class PromotionTests extends BaseTest{
 
     @Test
     public void simplePing() {
-        given().when().get("https://api.xsolla.com/merchant/merchants/22174/promotions/").then().statusCode(404);
+        given().when().get("").then().statusCode(404);
     }
 
 

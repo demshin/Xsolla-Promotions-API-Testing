@@ -8,12 +8,6 @@ public class BaseTest {
 
     @BeforeClass
     public static void setup() {
-        String port = System.getProperty("server.port");
-        if (port == null) {
-            port = TestsConfig.getConfig().getPort();
-        }
-        RestAssured.port = Integer.valueOf(TestsConfig.getConfig().getPort());
-
         String basePath = System.getProperty("server.base");
         if (basePath == null) {
             basePath = TestsConfig.getConfig().getBase() + TestsConfig.getConfig().getMerchant() + "/" +
@@ -27,6 +21,7 @@ public class BaseTest {
         }
         RestAssured.baseURI = baseHost;
 
-        //mvn test -Dserver.port=80 -Dserver.host=https://api.xsolla.com - запуск из командной строки
+        //mvn test -Dserver.host=https://api.xsolla.com - запуск из командной строки
+
     }
 }
