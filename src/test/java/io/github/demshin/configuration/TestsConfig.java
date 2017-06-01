@@ -25,11 +25,17 @@ public class TestsConfig {
     @Property("server.host")
     private String host = "";
 
-    @Property("merchant")
-    private String merchant = "";
+    @Property("merchant_id")
+    private String merchantId = "";
 
     @Property("section")
     private String section = "";
+
+    @Property("project_id")
+    private String projectId = "";
+
+    @Property("api_key")
+    private String apiKey = "";
 
     public String getBase() {
         String baseForTests = base;
@@ -49,12 +55,12 @@ public class TestsConfig {
         }
     }
 
-    public String getMerchant() {
-        String merchantForTests = merchant;
+    public String getMerchantId() {
+        String merchantForTests = merchantId;
         if (merchantForTests != null) {
             return merchantForTests;
         } else {
-            throw new IllegalStateException("Merchant '" + merchant + "' is not valid");
+            throw new IllegalStateException("Merchant '" + merchantId + "' is not valid");
         }
     }
 
@@ -66,4 +72,24 @@ public class TestsConfig {
             throw new IllegalStateException("Section '" + section + "' is not valid");
         }
     }
+
+    public String getProjectId() {
+        String projectIdForTests = projectId;
+        if (projectIdForTests != null) {
+            return projectIdForTests;
+        } else {
+            throw new IllegalStateException("ProjectID '" + projectId + "' is not valid");
+        }
+    }
+
+    public String getApiKey() {
+        String apiKeyForTests = apiKey;
+        if (apiKeyForTests != null) {
+            return apiKeyForTests;
+        } else {
+            throw new IllegalStateException("ApiKey '" + apiKey + "' is not valid");
+        }
+    }
+
+
 }

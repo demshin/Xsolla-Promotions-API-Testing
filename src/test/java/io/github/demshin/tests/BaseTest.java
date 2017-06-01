@@ -10,8 +10,8 @@ public class BaseTest {
     public static void setup() {
         String basePath = System.getProperty("server.base");
         if (basePath == null) {
-            basePath = TestsConfig.getConfig().getBase() + TestsConfig.getConfig().getMerchant() + "/" +
-                    TestsConfig.getConfig().getSection() + "/";
+            basePath = TestsConfig.getConfig().getBase() + TestsConfig.getConfig().getMerchantId() +
+                    TestsConfig.getConfig().getSection();
         }
         RestAssured.basePath = basePath;
 
