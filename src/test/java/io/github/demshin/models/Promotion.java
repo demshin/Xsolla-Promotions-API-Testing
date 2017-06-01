@@ -55,7 +55,6 @@ public class Promotion {
         this.project_id = project_id;
     }
 
-
     public static Promotion getRandomPromotion() {
         String name = getRandomName();
         final String DISCOUNT = getRandomDiscount();
