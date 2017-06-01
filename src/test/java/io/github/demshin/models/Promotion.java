@@ -9,54 +9,50 @@ import static io.github.demshin.utils.Generators.getRandomName;
 
 public class Promotion {
 
-    public static void main(String[] args) {
-        System.out.println(getRandomPromotion().toString());
+    private String technical_name;
+    private HashMap<String, String> label;
+    private HashMap<String, String> name;
+    private HashMap<String, String> description;
+    private String project_id;
+
+    public String getTechnical_name() {
+        return technical_name;
     }
 
-    private String technicalName;
-    private HashMap<String, Object> label;
-    private HashMap<String, Object> name;
-    private HashMap<String, Object> description;
-    private String projectId;
-
-    public String getTechnicalName() {
-        return technicalName;
+    public void setTechnical_name(String technical_name) {
+        this.technical_name = technical_name;
     }
 
-    public void setTechnicalName(String technicalName) {
-        this.technicalName = technicalName;
-    }
-
-    public HashMap<String, Object> getLabel() {
+    public HashMap<String, String> getLabel() {
         return label;
     }
 
-    public void setLabel(HashMap<String, Object> label) {
+    public void setLabel(HashMap<String, String> label) {
         this.label = label;
     }
 
-    public HashMap<String, Object> getName() {
+    public HashMap<String, String> getName() {
         return name;
     }
 
-    public void setName(HashMap<String, Object> name) {
+    public void setName(HashMap<String, String> name) {
         this.name = name;
     }
 
-    public HashMap<String, Object> getDescription() {
+    public HashMap<String, String> getDescription() {
         return description;
     }
 
-    public void setDescription(HashMap<String, Object> description) {
+    public void setDescription(HashMap<String, String> description) {
         this.description = description;
     }
 
-    public String getProjectId() {
-        return projectId;
+    public String getProject_id() {
+        return project_id;
     }
 
-    public void setProjectId(String projectId) {
-        this.projectId = projectId;
+    public void setProject_id(String project_id) {
+        this.project_id = project_id;
     }
 
 
@@ -66,29 +62,18 @@ public class Promotion {
         String id = TestsConfig.getConfig().getProjectId();
 
         Promotion promotion = new Promotion();
-        promotion.setTechnicalName(name);
-        promotion.setLabel(new HashMap<String, Object>() {{
+        promotion.setTechnical_name(name);
+        promotion.setLabel(new HashMap<String, String>() {{
             put("en", DISCOUNT + "% save");
         }});
-        promotion.setName(new HashMap<String, Object>() {{
+        promotion.setName(new HashMap<String, String>() {{
             put("en", DISCOUNT + "% PayPal Discount");
         }});
-        promotion.setDescription(new HashMap<String, Object>() {{
+        promotion.setDescription(new HashMap<String, String>() {{
             put("en", DISCOUNT + "% PayPal Discount Sample");
         }});
-        promotion.setProjectId(id);
+        promotion.setProject_id(id);
 
         return promotion;
-    }
-
-    @Override
-    public String toString() {
-        return "Promotion{" +
-                "technicalName='" + technicalName + '\'' +
-                ", label=" + label +
-                ", name=" + name +
-                ", description=" + description +
-                ", projectId=" + projectId +
-                '}';
     }
 }
