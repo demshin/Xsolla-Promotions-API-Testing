@@ -4,6 +4,8 @@ import io.github.demshin.configuration.TestsConfig;
 import io.restassured.RestAssured;
 import org.testng.annotations.BeforeClass;
 
+import static io.restassured.RestAssured.basic;
+
 public class BaseTest {
 
     @BeforeClass
@@ -21,7 +23,9 @@ public class BaseTest {
         }
         RestAssured.baseURI = baseHost;
 
-        //mvn test -Dserver.host=https://api.xsolla.com - запуск из командной строки
+        String username = TestsConfig.getConfig().getMerchantId();
+        String password = TestsConfig.getConfig().getApiKey();
 
+        RestAssured.authentication = basic(username, password);
     }
 }

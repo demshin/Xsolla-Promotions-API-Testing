@@ -1,6 +1,6 @@
 package io.github.demshin.models;
 
-public class NewPromotionResponce {
+public class NewPromotionResponse {
     private int id;
 
     public int getId() {
