@@ -6,4 +6,9 @@ public class NewPromotionResponse {
     public int getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(id);
+    }
 }

@@ -1,0 +1,10 @@
+[
+  {
+    "component": "rewards",
+    "message": "You didn't select any reward"
+  },
+  {
+    "component": "periods",
+    "message": "Please set the promotion time periods."
+  }
+]

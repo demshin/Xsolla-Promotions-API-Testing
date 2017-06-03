@@ -9,11 +9,22 @@ import static io.github.demshin.utils.Generators.getRandomName;
 
 public class Promotion {
 
+    private String id;
     private String technical_name;
     private HashMap<String, String> label;
     private HashMap<String, String> name;
     private HashMap<String, String> description;
     private String project_id;
+    private Boolean read_only;
+    private Boolean enabled;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getTechnical_name() {
         return technical_name;
@@ -53,6 +64,22 @@ public class Promotion {
 
     public void setProject_id(String project_id) {
         this.project_id = project_id;
+    }
+
+    public Boolean getRead_only() {
+        return read_only;
+    }
+
+    public void setRead_only(Boolean read_only) {
+        this.read_only = read_only;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
     public static Promotion getRandomPromotion() {
