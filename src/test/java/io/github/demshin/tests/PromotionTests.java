@@ -77,4 +77,34 @@ public class PromotionTests extends BaseTest {
             }
         }
     }
+
+    @Test(description = "Toggle the promotion")
+    public void togglePromotion() {
+
+        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+                .when().put("/" + promotion_id + "/toggle")
+                .then().statusCode(204);
+        //TODO проверить, что занчение поля поменялось
+    }
+
+    @Test(description = "Delete a promotion")
+    public void deletePromotion() {
+        //удаляем акцию
+        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+                .when().delete("/" + promotion_id)
+                .then().statusCode(204);
+
+        //проверяем, что акция удалена (ошибка 404)
+        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+                .when().get("/" + promotion_id)
+                .then().statusCode(404);
+    }
+
+    @Test(description = "List all promotions")
+    public void listAllPromotions() {
+        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+                .when().get("")
+                .then().statusCode(200);
+        //TODO валидацию листа прикрутить
+    }
 }
