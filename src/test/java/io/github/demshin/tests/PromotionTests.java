@@ -3,11 +3,17 @@ package io.github.demshin.tests;
 import io.github.demshin.models.NewPromotionResponse;
 import io.github.demshin.models.Promotion;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import static io.restassured.RestAssured.given;
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static io.restassured.path.json.JsonPath.from;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.testng.Assert.assertTrue;
 
@@ -52,10 +58,23 @@ public class PromotionTests extends BaseTest {
 
     @Test(description = "Review the promotion")
     public void reviewPromotion() {
-        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+        Response response = given().contentType(ContentType.JSON).accept(ContentType.JSON)
                 .when().get("/" + promotion_id + "/review")
-                .then().statusCode(200).assertThat().body(matchesJsonSchemaInClasspath("reviewPromotionResponse.json"));
+                .then().statusCode(200).extract().response();
+
+        //проверяем размер ответа
+        String jsonAsString = response.asString();
+        ArrayList<Map<String, ?>> jsonAsArrayList = from(jsonAsString).get("");
+        assertThat(jsonAsArrayList.size(), equalTo(6));
+
+        //проверяем содержание поля "component" ответа
+        List<String> errorsComponent = response.path("component");
+        for (int i = 0; i < errorsComponent.size(); i++) {
+            if (i != 0) {
+                assertThat(errorsComponent.get(i), equalTo("periods"));
+            } else {
+                assertThat(errorsComponent.get(i), equalTo("rewards"));
+            }
+        }
     }
-
-
 }
