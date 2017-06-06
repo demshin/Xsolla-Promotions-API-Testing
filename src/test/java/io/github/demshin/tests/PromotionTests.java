@@ -2,6 +2,7 @@ package io.github.demshin.tests;
 
 import io.github.demshin.models.NewPromotionResponse;
 import io.github.demshin.models.Promotion;
+import io.github.demshin.models.Subject;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeMethod;
@@ -107,4 +108,23 @@ public class PromotionTests extends BaseTest {
                 .then().statusCode(200);
         //TODO валидацию листа прикрутить
     }
+
+    @Test(description = "Get the subject of the promotion")
+    public void getSubjectOfPromotion() {
+        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+                .when().get("/" + promotion_id + "/subject")
+                .then().statusCode(200);
+        //TODO прикрутить валидацию
+    }
+
+    @Test(description = "Set the subject of the promotion")
+    public void setSubjectOfPromotion() {
+        Subject subject = Subject.getRandomSubject();
+
+        given().contentType(ContentType.JSON).contentType(ContentType.JSON).body(subject)
+                .when().put("/" + promotion_id + "/subject")
+                .then().statusCode(204);
+    }
+
+
 }

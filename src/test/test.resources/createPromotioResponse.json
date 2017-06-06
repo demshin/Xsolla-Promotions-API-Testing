@@ -1,0 +1,13 @@
+{
+  "technical_name": "Sample Promotion",
+  "label": {
+    "en": "30% SAVE"
+  },
+  "name": {
+    "en": "30% PayPal Discount"
+  },
+  "description": {
+    "en": "30% PayPal Discount Sample"
+  },
+  "project_id": 1
+}

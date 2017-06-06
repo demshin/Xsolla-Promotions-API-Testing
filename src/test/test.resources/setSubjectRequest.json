@@ -1,0 +1,36 @@
+{
+  "purchase": false,
+  "items": [
+    {
+      "sku":"t-43-3-unique-id"
+    }
+  ],
+  "packages": null,
+  "subscriptions": {
+    "plans": [
+      {
+        "id":123456
+      }
+    ],
+    "products": [
+      654321
+    ],
+    "max_charges_count": null
+  },
+  "digital_contents":[
+    {
+      "id":1,
+      "localized_name":"test",
+      "drm":[
+        {
+          "id":1,
+          "name":"Steam"
+        },
+        {
+          "id":2,
+          "name":"Playstation"
+        }
+      ]
+    }
+  ]
+}
