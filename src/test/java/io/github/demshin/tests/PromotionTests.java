@@ -106,7 +106,7 @@ public class PromotionTests extends BaseTest {
     }
 
     @Test(description = "Get the subject of the promotion")
-    public void getSubjectOfPromotion() {
+    public void getSubject() {
         given().contentType(ContentType.JSON).accept(ContentType.JSON)
                 .when().get("/" + promotion_id + "/subject")
                 .then().statusCode(200);
@@ -114,7 +114,7 @@ public class PromotionTests extends BaseTest {
     }
 
     @Test(description = "Set the subject of the promotion")
-    public void setSubjectOfPromotion() {
+    public void setSubject() {
         Subject subject = Subject.getRandomSubject();
         given().contentType(ContentType.JSON).accept(ContentType.JSON).body(subject)
                 .when().put("/" + promotion_id + "/subject")
@@ -168,5 +168,14 @@ public class PromotionTests extends BaseTest {
                 .then().statusCode(200);
     }
 
+    @Test(description = "Set the rewards to the promotion")
+    public void setRewards() {
+        Rewards rewards = Rewards.getRandomRewards();
+        System.out.println(rewards.toString());
 
+        given().contentType(ContentType.JSON).accept(ContentType.JSON).body(rewards)
+                .when().put("/" + promotion_id + "/rewards")
+                .then().statusCode(204);
+        //тест составлен по документации, но он падает, т.к. не соотвествует
+    }
 }

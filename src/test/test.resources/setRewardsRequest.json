@@ -1,0 +1,29 @@
+{
+  "purchase": {
+    "discount_percent": 10
+  },
+  "package": {
+    "bonus_percent": 5,
+    "bonus_amount": 5
+  },
+  "item": {
+    "discount": [
+      {
+        "sku": "t-43-3-unique-id",
+        "name": "T-34-3",
+        "max_amount": 10,
+        "discount_percent": 5
+      }
+    ],
+    "bonus": [
+      {
+        "sku": "t-43-3-unique-id",
+        "name": "T-34-3",
+        "amount": 2
+      }
+    ]
+  },
+  "subscription": {
+    "trial_days": 30
+  }
+}
