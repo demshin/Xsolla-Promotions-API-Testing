@@ -1,6 +1,7 @@
 package io.github.demshin.tests;
 
 import io.github.demshin.models.NewPromotionResponse;
+import io.github.demshin.models.PaymentSystems;
 import io.github.demshin.models.Promotion;
 import io.github.demshin.models.Subject;
 import io.restassured.http.ContentType;
@@ -120,10 +121,31 @@ public class PromotionTests extends BaseTest {
     @Test(description = "Set the subject of the promotion")
     public void setSubjectOfPromotion() {
         Subject subject = Subject.getRandomSubject();
-
-        given().contentType(ContentType.JSON).contentType(ContentType.JSON).body(subject)
+        given().contentType(ContentType.JSON).accept(ContentType.JSON).body(subject)
                 .when().put("/" + promotion_id + "/subject")
                 .then().statusCode(204);
+
+        /*тест падает, т.к. нет корректных данных:
+        "Subscription plan with id = 1 is not found.",
+        "Subscription product with id = 1 is not found."*/
+    }
+
+    @Test(description = "Get the payment systems of the promotion")
+    public void getPaymentSystems() {
+        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+                .when().get("/" + promotion_id + "/payment_systems")
+                .then().statusCode(200);
+        //todo валидацию!
+    }
+
+    @Test(description = "Set the payment systems of the promotion.")
+    public void setPaymentSystems() {
+        PaymentSystems paymentSystems = PaymentSystems.getRandomPaymentSystems();
+
+        given().contentType(ContentType.JSON).accept(ContentType.JSON).body(paymentSystems)
+                .when().put("/" + promotion_id + "/payment_systems")
+                .then().statusCode(204);
+        //todo валидацию!
     }
 
 

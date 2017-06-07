@@ -1,4 +1,3 @@
-
 package io.github.demshin.models;
 
 import java.util.ArrayList;
@@ -96,19 +95,6 @@ public class Subject {
         subject.setSubscriptions(subscriptions);
         subject.setDigital_contents(listOfDigitalContents);
 
-        System.out.println(subject.toString());
-
         return subject;
-    }
-
-    @Override
-    public String toString() {
-        return "{" +
-                "purchase=" + purchase +
-                ", items=" + items +
-                ", packages=" + packages +
-                ", subscriptions=" + subscriptions +
-                ", digital_contents=" + digital_contents +
-                '}';
     }
 }
