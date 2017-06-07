@@ -27,7 +27,7 @@ public class PromotionTests extends BaseTest {
     @Test(description = "Create a new promotion")
     @BeforeMethod
     public void createNewPromotion() {
-        NewPromotionResponse newPromotionResponse = given().contentType(ContentType.JSON).accept(ContentType.JSON).body(promotion)
+        NewPromotionResponse newPromotionResponse = given().contentType(ContentType.JSON).body(promotion)
                 .when().post("")
                 .as(NewPromotionResponse.class);
 
@@ -38,7 +38,7 @@ public class PromotionTests extends BaseTest {
 
     @Test(description = "Get the promotion by promotion_id")
     public void getPromotion() {
-        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+        given().contentType(ContentType.JSON)
                 .when().get("/" + promotion_id)
                 .then().statusCode(200).body("id", equalTo(promotion_id));
     }
@@ -47,7 +47,7 @@ public class PromotionTests extends BaseTest {
     public void updatePromotion() {
         Promotion promotionForUpdate = Promotion.getRandomPromotion();
 
-        given().contentType(ContentType.JSON).accept(ContentType.JSON).body(promotionForUpdate)
+        given().contentType(ContentType.JSON).body(promotionForUpdate)
                 .when().put("/" + promotion_id)
                 .then().statusCode(204);
         //TODO дописать на проверку апдейтнутого
@@ -55,7 +55,7 @@ public class PromotionTests extends BaseTest {
 
     @Test(description = "Review the promotion")
     public void reviewPromotion() {
-        Response response = given().contentType(ContentType.JSON).accept(ContentType.JSON)
+        Response response = given().contentType(ContentType.JSON)
                 .when().get("/" + promotion_id + "/review")
                 .then().statusCode(200).extract().response();
 
@@ -78,7 +78,7 @@ public class PromotionTests extends BaseTest {
     @Test(description = "Toggle the promotion")
     public void togglePromotion() {
 
-        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+        given().contentType(ContentType.JSON)
                 .when().put("/" + promotion_id + "/toggle")
                 .then().statusCode(204);
         //TODO проверить, что занчение поля поменялось
@@ -87,19 +87,19 @@ public class PromotionTests extends BaseTest {
     @Test(description = "Delete a promotion")
     public void deletePromotion() {
         //удаляем акцию
-        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+        given().contentType(ContentType.JSON)
                 .when().delete("/" + promotion_id)
                 .then().statusCode(204);
 
         //проверяем, что акция удалена (ошибка 404)
-        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+        given().contentType(ContentType.JSON)
                 .when().get("/" + promotion_id)
                 .then().statusCode(404);
     }
 
     @Test(description = "List all promotions")
     public void listAllPromotions() {
-        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+        given().contentType(ContentType.JSON)
                 .when().get("")
                 .then().statusCode(200);
         //TODO валидацию листа прикрутить
@@ -107,7 +107,7 @@ public class PromotionTests extends BaseTest {
 
     @Test(description = "Get the subject of the promotion")
     public void getSubject() {
-        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+        given().contentType(ContentType.JSON)
                 .when().get("/" + promotion_id + "/subject")
                 .then().statusCode(200);
         //TODO прикрутить валидацию
@@ -116,7 +116,7 @@ public class PromotionTests extends BaseTest {
     @Test(description = "Set the subject of the promotion")
     public void setSubject() {
         Subject subject = Subject.getRandomSubject();
-        given().contentType(ContentType.JSON).accept(ContentType.JSON).body(subject)
+        given().contentType(ContentType.JSON).body(subject)
                 .when().put("/" + promotion_id + "/subject")
                 .then().statusCode(204);
 
@@ -127,7 +127,7 @@ public class PromotionTests extends BaseTest {
 
     @Test(description = "Get the payment systems of the promotion")
     public void getPaymentSystems() {
-        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+        given().contentType(ContentType.JSON)
                 .when().get("/" + promotion_id + "/payment_systems")
                 .then().statusCode(200);
         //todo валидацию!
@@ -137,7 +137,7 @@ public class PromotionTests extends BaseTest {
     public void setPaymentSystems() {
         PaymentSystems paymentSystems = PaymentSystems.getRandomPaymentSystems();
 
-        given().contentType(ContentType.JSON).accept(ContentType.JSON).body(paymentSystems)
+        given().contentType(ContentType.JSON).body(paymentSystems)
                 .when().put("/" + promotion_id + "/payment_systems")
                 .then().statusCode(204);
         //todo валидацию!
@@ -145,7 +145,7 @@ public class PromotionTests extends BaseTest {
 
     @Test(description = "Get the periods of the promotion")
     public void getPeriods() {
-        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+        given().contentType(ContentType.JSON)
                 .when().get("/" + promotion_id + "/periods")
                 .then().statusCode(200);
         //todo валидацию!
@@ -155,7 +155,7 @@ public class PromotionTests extends BaseTest {
     public void setPeriods() {
         Periods periods = Periods.getRandomPeriods();
 
-        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+        given().contentType(ContentType.JSON)
                 .when().put("/" + promotion_id + "/periods")
                 .then().statusCode(204);
         //todo валидацию!
@@ -163,7 +163,7 @@ public class PromotionTests extends BaseTest {
 
     @Test(description = "Get the rewards of the promotion")
     public void getRewards() {
-        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+        given().contentType(ContentType.JSON)
                 .when().get("/" + promotion_id + "/rewards")
                 .then().statusCode(200);
     }
@@ -173,7 +173,7 @@ public class PromotionTests extends BaseTest {
         Rewards rewards = Rewards.getRandomRewards();
         System.out.println(rewards.toString());
 
-        given().contentType(ContentType.JSON).accept(ContentType.JSON).body(rewards)
+        given().contentType(ContentType.JSON).body(rewards)
                 .when().put("/" + promotion_id + "/rewards")
                 .then().statusCode(204);
         //тест составлен по документации, но он падает, т.к. не соотвествует
