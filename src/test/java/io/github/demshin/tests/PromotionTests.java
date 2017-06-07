@@ -1,9 +1,6 @@
 package io.github.demshin.tests;
 
-import io.github.demshin.models.NewPromotionResponse;
-import io.github.demshin.models.PaymentSystems;
-import io.github.demshin.models.Promotion;
-import io.github.demshin.models.Subject;
+import io.github.demshin.models.*;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeMethod;
@@ -21,7 +18,6 @@ import static org.testng.Assert.assertTrue;
 
 public class PromotionTests extends BaseTest {
     private Promotion promotion;
-    private NewPromotionResponse newPromotionResponse;
     private int promotion_id;
 
     public PromotionTests() {
@@ -31,10 +27,9 @@ public class PromotionTests extends BaseTest {
     @Test(description = "Create a new promotion")
     @BeforeMethod
     public void createNewPromotion() {
-        newPromotionResponse =
-                given().contentType(ContentType.JSON).accept(ContentType.JSON).body(promotion)
-                        .when().post("")
-                        .as(NewPromotionResponse.class);
+        NewPromotionResponse newPromotionResponse = given().contentType(ContentType.JSON).accept(ContentType.JSON).body(promotion)
+                .when().post("")
+                .as(NewPromotionResponse.class);
 
         assertTrue(newPromotionResponse.getId() > 0);
         promotion_id = newPromotionResponse.getId();
@@ -138,7 +133,7 @@ public class PromotionTests extends BaseTest {
         //todo валидацию!
     }
 
-    @Test(description = "Set the payment systems of the promotion.")
+    @Test(description = "Set the payment systems of the promotion")
     public void setPaymentSystems() {
         PaymentSystems paymentSystems = PaymentSystems.getRandomPaymentSystems();
 
@@ -148,5 +143,21 @@ public class PromotionTests extends BaseTest {
         //todo валидацию!
     }
 
+    @Test(description = "Get the periods of the promotion")
+    public void getPeriods() {
+        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+                .when().get("/" + promotion_id + "/periods")
+                .then().statusCode(200);
+        //todo валидацию!
+    }
 
+    @Test(description = "Set the periods of the promotion")
+    public void setPeriods() {
+        Periods periods = Periods.getRandomPeriods();
+
+        given().contentType(ContentType.JSON).accept(ContentType.JSON)
+                .when().put("/"+promotion_id+"/periods")
+                .then().statusCode(204);
+        //todo валидацию!
+    }
 }
