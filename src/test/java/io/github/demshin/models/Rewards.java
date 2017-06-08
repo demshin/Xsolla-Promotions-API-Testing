@@ -1,10 +1,13 @@
 package io.github.demshin.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Rewards {
     private HashMap<String, String> purchase;
+    @JsonProperty("package")
     private HashMap<String, String> Package;
     private HashMap<String, ArrayList<HashMap<String, String>>> item;
     private HashMap<String, String> subscription;
@@ -77,15 +80,5 @@ public class Rewards {
         rewards.setSubscription(mapOfSubscription);
 
         return rewards;
-    }
-
-    @Override
-    public String toString() {
-        return "Rewards{" +
-                "purchase=" + purchase +
-                ", Package=" + Package +
-                ", item=" + item +
-                ", subscription=" + subscription +
-                '}';
     }
 }

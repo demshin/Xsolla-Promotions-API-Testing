@@ -88,7 +88,7 @@ public class PromotionTests extends BaseTest {
         given().contentType(ContentType.JSON)
                 .when().put("/" + promotion_id + "/toggle")
                 .then().statusCode(204);
-        //
+        //тест падает
     }
 
     @Test(description = "Delete a promotion")
@@ -184,11 +184,10 @@ public class PromotionTests extends BaseTest {
     @Test(description = "Set the rewards to the promotion")
     public void setRewards() {
         Rewards rewards = Rewards.getRandomRewards();
-        System.out.println(rewards.toString());
 
         given().contentType(ContentType.JSON).body(rewards)
                 .when().put("/" + promotion_id + "/rewards")
                 .then().statusCode(204);
-        //тест составлен по документации, но он падает, т.к. не соотвествует
+        //тест составлен по документации, но он падает, т.к. в запросе невалидны, падает ошибка - 422
     }
 }
