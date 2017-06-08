@@ -19,8 +19,8 @@ public class Periods {
     public static Periods getRandomPeriods() {
         Periods periods = new Periods();
         HashMap<String, String> mapOfPeriods = new HashMap<>();
-        mapOfPeriods.put("from", "2017-06-07T00:00:00+04:00");
-        mapOfPeriods.put("to", "2017-06-10T00:00:00+04:00");
+        mapOfPeriods.put("from", "2018-06-09T00:00:00+04:00");
+        mapOfPeriods.put("to", "2018-06-15T00:00:00+04:00");
         ArrayList<HashMap<String,String>> listOfPeriods = new ArrayList<>();
         listOfPeriods.add(mapOfPeriods);
         periods.setPeriods(listOfPeriods);
