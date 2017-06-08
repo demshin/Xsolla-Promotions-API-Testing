@@ -45,12 +45,16 @@ public class PromotionTests extends BaseTest {
 
     @Test(description = "Update a promotion")
     public void updatePromotion() {
+        //обновляем акцию
         Promotion promotionForUpdate = Promotion.getRandomPromotion();
-
         given().contentType(ContentType.JSON).body(promotionForUpdate)
                 .when().put("/" + promotion_id)
                 .then().statusCode(204);
-        //TODO дописать на проверку апдейтнутого
+
+        //получаем обновленную акцию и проверяем, что она обновилась
+        given().contentType(ContentType.JSON)
+                .when().get("/" + promotion_id)
+                .then().body("technical_name", equalTo(promotionForUpdate.getTechnical_name()));
     }
 
     @Test(description = "Review the promotion")
@@ -81,7 +85,7 @@ public class PromotionTests extends BaseTest {
         given().contentType(ContentType.JSON)
                 .when().put("/" + promotion_id + "/toggle")
                 .then().statusCode(204);
-        //TODO проверить, что занчение поля поменялось
+        //
     }
 
     @Test(description = "Delete a promotion")
@@ -109,7 +113,7 @@ public class PromotionTests extends BaseTest {
     public void getSubject() {
         given().contentType(ContentType.JSON)
                 .when().get("/" + promotion_id + "/subject")
-                .then().statusCode(200);
+                .then().statusCode(200).body("purchase", equalTo("true"));
         //TODO прикрутить валидацию
     }
 
