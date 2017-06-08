@@ -1,5 +1,6 @@
 package io.github.demshin.tests;
 
+import io.github.demshin.configuration.TestsConfig;
 import io.github.demshin.models.*;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -13,15 +14,17 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static io.restassured.path.json.JsonPath.from;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.*;
 import static org.testng.Assert.assertTrue;
 
 public class PromotionTests extends BaseTest {
     private Promotion promotion;
     private int promotion_id;
+    private String project_id;
 
     public PromotionTests() {
         promotion = Promotion.getRandomPromotion();
+        project_id = TestsConfig.getConfig().getProjectId();
     }
 
     @Test(description = "Create a new promotion")
@@ -106,15 +109,16 @@ public class PromotionTests extends BaseTest {
         given().contentType(ContentType.JSON)
                 .when().get("")
                 .then().statusCode(200);
-        //TODO валидацию листа прикрутить
     }
 
     @Test(description = "Get the subject of the promotion")
     public void getSubject() {
         given().contentType(ContentType.JSON)
                 .when().get("/" + promotion_id + "/subject")
-                .then().statusCode(200).body("purchase", equalTo("true"));
-        //TODO прикрутить валидацию
+                .then().statusCode(200).body("purchase", equalTo(true))
+                .body("items", equalTo(null))
+                .body("packages", equalTo(null))
+                .body("digital_contents", equalTo(null));
     }
 
     @Test(description = "Set the subject of the promotion")

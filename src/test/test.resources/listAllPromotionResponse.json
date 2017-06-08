@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "project": {
+      "id": 1,
+      "localized_name": "Demo Project"
+    },
+    "technical_name": "25% bonus",
+    "read_only": true,
+    "enabled": true,
+    "is_active": false,
+    "datetime": {
+      "from": "2014-10-15T00:00:00+04:00",
+      "to": "2014-10-16T23:59:59+04:00"
+    }
+  }
+]
