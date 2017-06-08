@@ -137,8 +137,7 @@ public class PromotionTests extends BaseTest {
     public void getPaymentSystems() {
         given().contentType(ContentType.JSON)
                 .when().get("/" + promotion_id + "/payment_systems")
-                .then().statusCode(200);
-        //todo валидацию!
+                .then().statusCode(200).body("id", equalTo(promotion_id));
     }
 
     @Test(description = "Set the payment systems of the promotion")
