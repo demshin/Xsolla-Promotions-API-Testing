@@ -6,14 +6,14 @@ import java.util.HashMap;
 
 public class Periods {
 
-    private ArrayList<HashMap<String, String>> Periods;
+    private ArrayList<HashMap<String, String>> periods;
 
     public ArrayList<HashMap<String, String>> getPeriods() {
-        return Periods;
+        return periods;
     }
 
     public void setPeriods(ArrayList<HashMap<String, String>> periods) {
-        Periods = periods;
+        this.periods = periods;
     }
 
     public static Periods getRandomPeriods() {

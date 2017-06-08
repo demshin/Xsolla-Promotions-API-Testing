@@ -158,18 +158,20 @@ public class PromotionTests extends BaseTest {
     public void getPeriods() {
         given().contentType(ContentType.JSON)
                 .when().get("/" + promotion_id + "/periods")
-                .then().statusCode(200);
-        //todo валидацию!
+                .then().statusCode(200).body("id", equalTo(promotion_id));
     }
 
     @Test(description = "Set the periods of the promotion")
     public void setPeriods() {
         Periods periods = Periods.getRandomPeriods();
 
-        given().contentType(ContentType.JSON)
+        given().contentType(ContentType.JSON).body(periods)
                 .when().put("/" + promotion_id + "/periods")
                 .then().statusCode(204);
-        //todo валидацию!
+
+        given().contentType(ContentType.JSON)
+                .when().get("/" + promotion_id + "/periods")
+                .then().body("id", equalTo(promotion_id));
     }
 
     @Test(description = "Get the rewards of the promotion")
