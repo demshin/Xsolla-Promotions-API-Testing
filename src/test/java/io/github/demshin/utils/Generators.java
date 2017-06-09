@@ -3,11 +3,6 @@ package io.github.demshin.utils;
 import java.util.Random;
 
 public class Generators {
-    public static String getRandomID() {
-        Random random = new Random();
-        return String.valueOf(random.nextInt(99999));
-    }
-
     public static String getRandomDiscount() {
         Random random = new Random();
         return String.valueOf(random.nextInt(98) + 1);

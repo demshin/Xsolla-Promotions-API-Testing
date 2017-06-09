@@ -11,7 +11,7 @@ import java.util.Properties;
 public class PropertiesLoader {
 
     public static void populate(TestsConfig config) {
-        Properties properties = null;
+        Properties properties;
         PropertyFile propertyFileAnnotation = config.getClass().getAnnotation(PropertyFile.class);
         if (propertyFileAnnotation != null) {
             String propertyFileName = propertyFileAnnotation.value();

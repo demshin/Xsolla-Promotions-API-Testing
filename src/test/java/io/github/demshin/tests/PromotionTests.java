@@ -151,7 +151,7 @@ public class PromotionTests extends BaseTest {
         given().contentType(ContentType.JSON)
                 .when().get("/" + promotion_id + "/payment_systems")
                 .then().body("id", equalTo(promotion_id))
-                .body("payment_systems.id", contains(26));
+                .body("payment_systems.id", contains(24, 26));
     }
 
     @Test(description = "Get the periods of the promotion")

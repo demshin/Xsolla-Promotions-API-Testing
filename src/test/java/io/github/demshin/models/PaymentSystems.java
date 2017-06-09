@@ -19,10 +19,12 @@ public class PaymentSystems {
 
 
         ArrayList<HashMap<String, String>> listOfPaymentSystems = new ArrayList<>();
-        HashMap<String, String> mapOfPaymentSystems = new HashMap<>();
-        mapOfPaymentSystems.put("id", "24");
-        mapOfPaymentSystems.put("id", "26");
-        listOfPaymentSystems.add(mapOfPaymentSystems);
+        HashMap<String, String> mapOfPaymentSystems1 = new HashMap<>();
+        HashMap<String, String> mapOfPaymentSystems2 = new HashMap<>();
+        mapOfPaymentSystems1.put("id", "24");
+        mapOfPaymentSystems2.put("id", "26");
+        listOfPaymentSystems.add(mapOfPaymentSystems1);
+        listOfPaymentSystems.add(mapOfPaymentSystems2);
         paymentSystems.setPayment_systems(listOfPaymentSystems);
 
         return paymentSystems;
