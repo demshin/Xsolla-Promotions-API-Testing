@@ -42,7 +42,7 @@ public class TestsConfig {
         if (baseForTests != null) {
             return baseForTests;
         } else {
-            throw new IllegalStateException("Base '" + base + "' is not valid");
+            throw new IllegalStateException("Base is not valid");
         }
     }
 
@@ -51,7 +51,7 @@ public class TestsConfig {
         if (hostForTests != null) {
             return hostForTests;
         } else {
-            throw new IllegalStateException("Host '" + host + "' is not valid");
+            throw new IllegalStateException("Host is not valid");
         }
     }
 
@@ -60,7 +60,7 @@ public class TestsConfig {
         if (merchantForTests != null) {
             return merchantForTests;
         } else {
-            throw new IllegalStateException("Merchant '" + merchantId + "' is not valid");
+            throw new IllegalStateException("Merchant is not valid");
         }
     }
 
@@ -69,7 +69,7 @@ public class TestsConfig {
         if (sectionForTests != null) {
             return sectionForTests;
         } else {
-            throw new IllegalStateException("Section '" + section + "' is not valid");
+            throw new IllegalStateException("Section is not valid");
         }
     }
 
@@ -78,7 +78,7 @@ public class TestsConfig {
         if (projectIdForTests != null) {
             return projectIdForTests;
         } else {
-            throw new IllegalStateException("ProjectID '" + projectId + "' is not valid");
+            throw new IllegalStateException("ProjectID is not valid");
         }
     }
 
@@ -87,7 +87,7 @@ public class TestsConfig {
         if (apiKeyForTests != null) {
             return apiKeyForTests;
         } else {
-            throw new IllegalStateException("ApiKey '" + apiKey + "' is not valid");
+            throw new IllegalStateException("ApiKey is not valid");
         }
     }
 
